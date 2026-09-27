@@ -1,0 +1,22 @@
+const player = document.getElementById("player");
+const playMusic = document.getElementById("playMusic");
+
+playMusic.addEventListener("click", () => {
+  player.classList.remove("hidden");
+  playMusic.textContent = "♡ La canción está aquí";
+  playMusic.disabled = true;
+  player.scrollIntoView({ behavior: "smooth", block: "center" });
+});
+
+const hearts = document.querySelector(".hearts");
+function createHeart(){
+  const h=document.createElement("span");
+  h.className="floating-heart";
+  h.textContent=["♥","♡","❤","✦"][Math.floor(Math.random()*4)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(5+Math.random()*5)+"s";
+  h.style.fontSize=(12+Math.random()*18)+"px";
+  hearts.appendChild(h);
+  setTimeout(()=>h.remove(),10000);
+}
+setInterval(createHeart,700);
